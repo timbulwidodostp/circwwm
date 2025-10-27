@@ -2,4 +2,4 @@
 1
 2
 3
-p arhomme Arellano and Bonhomme (2017) quantile selection model (by Martin Biewen and Pascal Erhardt, 2020) Use arhomme With STATA 19
+p circwwm Wheeler-Watson-Mardia test for circular data Use circwwm With STATA 19
