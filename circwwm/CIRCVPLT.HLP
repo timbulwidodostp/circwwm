@@ -1,0 +1,71 @@
+.-
+help for ^circvplt^
+.-
+
+Cumulative vector plot for circular data
+----------------------------------------
+
+    ^circvplt^ varname [^if^ exp] [^in^ range]
+    [ ^, ahl(^#^) uti^tle^(^str^) lti^tle^(^str^) r^otate^(^#^)^
+    ^f^udge^(^#^) sa^ving^(^filename^)^ ]
+
+Description
+-----------
+
+^circvplt^ produces a cumulative vector plot for varname. varname should
+be a circular variable taking on values between 0 and 360 degrees.
+
+Each value of varname is plotted as a unit vector. The vectors are
+sorted and plotted end to end, by default starting opposite the mean
+direction. The resultant of the vectors is also shown as an arrow. A
+separate arrow indicates North.
+
+Pen 1 is used for the text and North arrow.
+Pen 4 is used for the vectors.
+Pen 5 is used for the resultant.
+
+Recommended printing thicknesses: pen 1 at 2
+                                  pen 4 at 2
+                                  pen 5 at 8
+
+Options
+-------
+
+^ahl(^#^)^ specifies the arrowhead length on the arrow indicating the
+    mean direction. Default 600.
+
+^utitle(^string^)^ defines an upper title.
+
+^ltitle(^string^)^ defines a lower title. The default indicates the
+    mean direction and vector strength. A single period ^.^ will have
+    the effect of blanking out this default.
+
+^rotate(^#^)^ changes the direction at which plotting starts by a
+    clockwise rotation of # degrees from the default of opposite the
+    vector mean. Such rotation is needed occasionally to avoid producing
+    a loop that cuts itself.
+
+^fudge(^#^)^ changes the ratio of vertical and horizontal lengths on the
+    plot. The default is 69189/64000 and is designed to achieve an
+    aspect ratio when printed.
+
+^saving(^filename^)^ saves the graph in filename.
+
+
+Example
+-------
+
+        . ^circvplt wallasp, uti("Lake District cirques wall aspect")^
+
+
+Author
+------
+         Nicholas J. Cox, University of Durham, U.K.
+         n.j.cox@@durham.ac.uk
+
+
+Also see
+--------
+
+On-line: help for @circdplt@, @circrplt@, @circsumm@
+

@@ -1,0 +1,76 @@
+.-
+help for ^circlcco^
+.-
+
+Correlation for linear-circular data
+------------------------------------
+
+    ^circlcco^ linearvar circvar [^if^ exp] [^in^ range]
+
+Description
+-----------
+
+^circlcco^ produces a correlation coefficient appropriate for a linear
+variable and a circular variable taking on values between 0 and 360
+degrees. The first-named variable is taken to be linear and the
+second-named variable is taken to be circular.
+
+The square of the correlation is defined for n values of two such
+variables, x linear and theta circular, as
+
+      2     2     2                           2
+     r = ( r   + r   - 2 r  r  r   ) / ( 1 - r   ),
+            12    13      12 13 23            23
+
+where
+
+    r   is correlation of x and cos theta
+     12
+
+    r   is correlation of x and sin theta
+     13
+
+    r   is correlation of sin theta and cos theta.
+     23
+
+Batschelet (1981, p.193) suggested for a large-sample significance test
+that if x and theta are independent, then n * r-square is approximately
+distributed as chi-square with 2 degrees of freedom. Fisher (1993,
+p.145) recommends obtaining P-values by randomisation. Caveat emptor.
+
+
+Example
+-------
+
+        . ^circlcco ozone dir^
+
+
+Saved values
+------------
+
+     S_1  number of observations
+     S_2  correlation squared
+     S_3  large sample P-value
+
+
+References
+----------
+
+Batschelet, E. 1981. Circular statistics in biology. London: Academic
+Press.
+
+Fisher, N.I. 1993. Statistical analysis of circular data. Cambridge:
+Cambridge University Press.
+
+
+Author
+------
+         Nicholas J. Cox, University of Durham, U.K.
+         n.j.cox@@durham.ac.uk
+
+
+Also see
+--------
+
+On-line: help for @circplot@, @circcorr@
+

@@ -1,0 +1,60 @@
+.-
+help for ^circhist^
+.-
+
+Histogram for circular data with wrapping round of bins
+-------------------------------------------------------
+
+    ^circhist^ varname [weight] [^if^ exp] [^in^ range]
+    [ ^,^ ^p^ad^(^#^) h^istplot { graph_options | histplot_options } ]
+
+Description
+-----------
+
+^circhist^ produces a histogram for varname with some wrapping round of
+bins. varname should be a circular variable taking on values between 0
+and 360 degrees.
+
+Options
+-------
+
+^pad(^#^)^ places a pad of # degrees at each end. Data less than or
+    equal to # degrees are copied at the right end of the axis for a
+    horizontal interval of 360 to 360+# degrees. Data more than 360-#
+    degrees are copied at the left end of the axis for a horizontal
+    interval of -# to 0 degrees. The default is 180, so that a full two
+    cycles are shown.
+
+^histplot^ indicates that ^histplot^ is to be used instead of ^graph,^
+    ^histogram^ to draw the graph. ^histplot^, ^genfreq^ and ^barplot^
+    must be installed if this option is specified.
+
+graph_options are any of the options allowed with ^graph, histogram^;
+    see help for ^graph^. The use of ^xsc^ is strongly recommended to
+    reduce puzzling details.
+
+histplot_options are any of the options allowed with ^histplot^;
+    see help for ^histplot^.
+
+
+Examples
+--------
+
+        . ^circhist wallasp, xsc(-180,540) bin(24)^
+        . ^circhist wallasp, pad(45) xsc(-45,405) bin(20)^
+          ^xla(0,90,180,270,360) yla freq^
+        . ^circhist wallasp, pad(45) xsc(-45,405) h w(10)^
+          ^xla(0,90,180,270,360) yla^
+
+
+Author
+------
+         Nicholas J. Cox, University of Durham, U.K.
+         n.j.cox@@durham.ac.uk
+
+
+Also see
+--------
+
+On-line: help for @graph@, @circnpde@, @histplot@ (if installed)
+

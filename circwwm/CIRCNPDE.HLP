@@ -1,0 +1,60 @@
+.-
+help for ^circnpde^
+.-
+
+Nonparametric density estimation for circular data
+--------------------------------------------------
+
+    ^circnpde^ varname [^if^ exp] [^in^ range] [^, h(^#^)^
+    ^genpdf(^pdfvar^) gendeg(^degvar^)^ graph_options ]
+
+Description
+-----------
+
+^circnpde^ produces nonparametric density estimates for circular
+variables with scales between 0 and 360 degrees. The kernel is a quartic
+or biweight kernel with a half-width given by ^h(^#^)^. The estimate is
+produced for equally spaced angles on the circle.
+
+
+Options
+-------
+
+^genpdf(^pdfvar^)^ specifies the name of a new variable in which
+    probability density estimates are to be stored.
+
+^gendeg(^degvar^)^ specifies the name of a new variable in which
+    equally spaced angles are to be stored.
+
+^h(^#^)^ specifies the half-width of the kernel in degrees. The default
+    is 30.
+
+graph_options are any of the options allowed with ^graph, twoway^;
+    see help for ^graph^.
+
+
+Examples
+--------
+
+        . ^circnpde wallasp^
+        . ^circnpde wallasp, h(45) genpdf(wallpdf) gendeg(deg)^
+
+
+Reference
+---------
+
+Fisher, N.I. 1993. Statistical analysis of circular data. Cambridge:
+Cambridge University Press.
+
+
+Author
+------
+         Nicholas J. Cox, University of Durham, U.K.
+         n.j.cox@@durham.ac.uk
+
+
+Also see
+--------
+
+On-line: help for @graph@, @circhist@, @circksm@, @circplot@
+

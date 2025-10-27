@@ -1,0 +1,58 @@
+.-
+help for ^circxsm^
+.-
+
+Smoothing including lowess for circular data, x-variable circular
+-----------------------------------------------------------------
+
+    ^circxsm^ yvar xvar [^if^ exp] [^in^ range] [ ^, p^ad^(^#^)^
+    ksm_options ]
+
+Description
+-----------
+
+^circxsm^ carries out smoothing (including lowess) for yvar with respect
+to xvar. It is applicable when xvar is a circular variable taking on
+values between 0 and 360 degrees. In this case, smoothed values just
+above 0 degrees should take account of data just below 360 degrees, and
+correspondingly just below 360 degrees. This is achieved by wrapping
+data around.
+
+The central 360 degree band contains smoothed values that take account
+of data before and after 360 degrees. It may be marked off graphically
+by ^xli(0,360)^. Outside this band, data are only used temporarily.
+
+Options
+-------
+
+^pad(^#^)^ specifies a pad of # degrees at each x-axis end. Data less
+    than or equal to # degrees are copied at the right end of the x-axis
+    for an interval of 360 to 360+# degrees. Data more than 360-#
+    degrees are copied at the left end of the x-axis for an interval of
+    -# to 0 degrees. The default is 180, so that a full two cycles are
+    shown.
+
+ksm_options are any of the options allowed with ^ksm^; see help for
+   ^ksm^.
+
+It is the user's responsibility to see that the argument of ^pad^ is
+consistent with the requested argument of ^bw^. The default is thought
+to be safe.
+
+Examples
+--------
+
+        . ^circxsm length wallasp, gen(lowessl) lowess^
+
+
+Author
+------
+         Nicholas J. Cox, University of Durham, U.K.
+         n.j.cox@@durham.ac.uk
+
+
+Also see
+--------
+
+On-line: help for @ksm@, @graph@, @circplot@, @circnpde@, @circysm@
+

@@ -1,0 +1,90 @@
+.-
+help for ^circdplt^
+.-
+
+Raw data plot for circular data with point symbols
+--------------------------------------------------
+
+    ^circdplt^ varname [^if^ exp] [^in^ range]
+    [ ^,^ ^r^ound^(^#^)^ ^s^ymbol^(^str^)^ ^si^ze^(^#^)^ ^f^udge^(^#^)^
+    ^ct cl non^orth ^ahl(^#^)^ ^uti^tle^(^string^)^ ^lti^tle^(^string^)^
+    ^sa^ving^(^filename^)^ ]
+
+Description
+-----------
+
+^circdplt^ produces a raw data plot for varname with point symbols.
+varname should be a circular variable taking on values between 0 and 360
+degrees.
+
+Strictly, the values of varname are rounded to the nearest 5 degrees, or
+to the argument of ^round^. Point symbols are plotted outwards from the
+circumference of a circle in each direction present in the data. The
+mean direction is indicated by an arrow from the centre of the circle
+with length the radius of the circle times the vector strength. Hence an
+arrow representing a mean direction with vector strength 1 would touch
+the circle. An arrow outside the circle indicates North (unless
+^nonorth^ is specified).
+
+The graph should be printed with vertical magnification 108%.
+
+Options
+-------
+
+^round(^#^)^ indicates the bin or class width to be used (default 5 deg).
+
+^symbol(^str^)^ indicates the point symbol to be used:
+    .   dot
+    O   large circle (default)
+    S   square
+    T   triangle
+    o   small circle
+    d   diamond
+    p   plus
+
+^size(^#^)^ indicates the size of point symbol to be used. Default 275.
+
+^fudge(^#^)^ is a fudge factor controlling the radial spacing of point
+    symbols. Default 1 means that the outermost point symbol will be
+    plotted at distance from the circle equal to the radius of that
+    circle. # means maximum distance # times that radius. Values greater
+    than 1 are risky: point symbols may overplot other stuff or fall
+    outside the plotting region.
+
+^ct^ places ticks inside the circle at the cardinal points N, E, W and S.
+
+^cl^ places letters inside the circle indicating N, E, W and S.
+
+^nonorth^ removes the arrow indicating N.
+
+^ahl(^#^)^ specifies the arrowhead length on the arrow indicating the
+    mean direction. Default 400.
+
+^utitle(^string^)^ defines an upper title.
+
+^ltitle(^string^)^ defines a lower title. The default indicates the mean
+    direction and vector strength. A single period ^.^ will have the
+    effect of blanking out this default.
+
+^saving(^filename^)^ saves the graph in filename.
+
+
+Example
+-------
+
+        . ^circdplt wallasp, uti("Lake District cirques wall aspect")^
+          ^r(2) si(100)^
+
+
+Author
+------
+         Nicholas J. Cox, University of Durham, U.K.
+         n.j.cox@@durham.ac.uk
+
+
+Also see
+--------
+
+On-line: help for @circrplt@, @circvplt@, @circsumm@
+
+

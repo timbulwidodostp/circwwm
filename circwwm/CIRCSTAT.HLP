@@ -1,0 +1,119 @@
+.-
+^circstat^: summary of circular statistics commands
+.-
+
+This set of programs is for circular data measured on a scale of 0-360 degrees.
+
+(Click on any command name in @green@ for further details.)
+
+1. Basic univariate graphics
+----------------------------
+
+1a. Raw data plot for circular data with spikes
+-----------------------------------------------
+
+    @circrplt@ varname [^if^ exp] [^in^ range]
+    [ ^,^ ^r^ound^(^#^)^ ^f^udge^(^#^)^ ^ct cl non^orth ^ahl(^#^)^
+    ^uti^tle^(^string^)^ ^lti^tle^(^string^)^ ^sa^ving^(^filename^)^ ]
+
+1b. Raw data plot for circular data with point symbols
+------------------------------------------------------
+
+    @circdplt@ varname [^if^ exp] [^in^ range]
+    [ ^,^ ^r^ound^(^#^)^ ^s^ymbol^(^str^)^ ^si^ze^(^#^)^ ^f^udge^(^#^)^
+    ^ct cl non^orth ^ahl(^#^)^ ^uti^tle^(^string^)^ ^lti^tle^(^string^)^
+    ^sa^ving^(^filename^)^ ]
+
+1c. Histogram for circular data with wrapping round of bins
+-----------------------------------------------------------
+
+    @circhist@ varname [weight] [^if^ exp] [^in^ range]
+    [ ^,^ ^p^ad^(^#^) h^istplot { graph_options | histplot_options } ]
+
+1d. Cumulative vector plot for circular data
+--------------------------------------------
+
+    @circvplt@ varname [^if^ exp] [^in^ range]
+    [ ^, ahl(^#^) uti^tle^(^str^) lti^tle^(^str^) r^otate^(^#^)^
+    ^f^udge^(^#^) sa^ving^(^filename^)^ ]
+
+1e. Nonparametric density estimation for circular data
+------------------------------------------------------
+
+    @circnpde@ varname [^if^ exp] [^in^ range] [^, h(^#^)^
+    ^genpdf(^newvar^) gendeg(^newvar^)^ graph_options
+
+
+2. Univariate summary, tests and manipulations
+----------------------------------------------
+
+2a. Summary statistics for circular data
+----------------------------------------
+
+    @circsumm@ varname [weight] [^if^ exp] [^in^ range]
+    [ ^, ci lev^el^(^#^) r^ayleigh ^k^uiper ^d^etail ]
+
+2b. Comparative statistics for circular data
+--------------------------------------------
+
+    @circcomp@ varname [weight] [^if^ exp] [^in^ range]
+    [ ^, by(^byvar^) ci lev^el^(^#^) r^ayleigh ^k^uiper ^d^etail ]
+
+    @circcomp@ varlist [weight] [^if^ exp] [^in^ range]
+    [ ^, ci lev^el^(^#^) r^ayleigh ^k^uiper ^d^etail ]
+
+2c. Centring circular data
+--------------------------
+
+    @circcent@ varname ^,  g^enerate^(^newvar^)^ [ ^c^entre^(^string^)^ ^p^os ]
+
+2d. Difference between circular variables
+-----------------------------------------
+
+    @circdiff@ varname1 varname2 ^, g^enerate^(^newvar^)^
+
+
+3. Correlation, scatter plots, smoothing
+----------------------------------------
+
+3a. Correlation for circular data
+---------------------------------
+
+    @circcorr@ varname1 varname2 [^if^ exp] [^in^ range]
+
+3b. Correlation for linear-circular data
+----------------------------------------
+
+    @circlcco@ linearvar circvar [^if^ exp] [^in^ range]
+
+3c. Scatter plot for circular data with wrapping round of data
+--------------------------------------------------------------
+
+    @circplot@ varlist [weight] [^if^ exp] [^in^ range]
+    [ ^, x^circ ^y^circ ^p^ad^(^#^) d^iff graph_options ]
+
+3d. Smoothing including lowess for circular data, x-variable circular
+---------------------------------------------------------------------
+
+    @circxsm@ yvar xvar [^if^ exp] [^in^ range] [ ^, p^ad^(^#^)^ ksm_options ]
+
+3e. Smoothing including lowess for circular data, y-variable circular
+---------------------------------------------------------------------
+
+    @circysm@ yvar xvar [^if^ exp] [^in^ range]
+    [ ^, g^enerate^(^newvar^)^ ksm_options circplot_options ]
+
+
+4. Two and k sample comparison
+------------------------------
+
+4a. Two-sample tests for circular data
+--------------------------------------
+
+    @circ2sam@ varname [^if^ exp] [^in^ range] ^, by(^groupvar^)^
+
+4b. Wheeler-Watson-Mardia test for circular data
+------------------------------------------------
+
+    @circwwm@ varname [^if^ exp] [^in^ range] ^, by(^groupvar^)^
+

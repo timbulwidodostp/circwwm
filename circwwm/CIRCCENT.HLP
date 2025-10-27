@@ -1,0 +1,57 @@
+.-
+help for ^circcent^
+.-
+
+Centring circular data
+----------------------
+
+    ^circcent^ varname ^,  g^enerate^(^newvar^)^ [ ^c^entre^(^string^)^ ^p^os ]
+
+Description
+-----------
+
+^circcent^ takes varname, a circular variable between 0 and 360 degrees,
+and produces a new variable newvar centring varname on the direction(s)
+given by ^centre(^ ^)^. By default, newvar varies from -180 degrees to
+180 degrees, with centre at 0 degrees. If the ^pos^ option is used,
+newvar varies from 0 to 360 degrees, with centre at 180 degrees.
+
+
+Options
+-------
+
+^generate(^newvar^)^ specifies the name of the new variable and is not
+    optional.
+
+^centre(^string^)^ specifies the direction(s) which correspond to the
+    centre(s) of newvar. The mean direction of varname is one
+    possibility. Note that this is produced by ^circsumm^ and deposited
+    in global macro S_2. Other possibilities are other constants or the
+    name of a variable containing one or more directions.
+
+^pos^ forces newvar to be non-negative, varying from 0 to 360 degrees.
+    180 degrees corresponds to the direction(s) specified by ^centre(^ ^)^.
+
+
+Examples
+--------
+
+        . ^circsumm wallasp^
+        . ^circcent wallasp, gen(newwall) centre($S_2)^
+
+        . ^circcent wallasp, gen(newwall) centre(45)^
+        . ^circcent wallasp, gen(newwall) centre(45) pos^
+
+        . ^circcent ori, gen(relflow) centre(iceflow)
+
+
+Author
+------
+         Nicholas J. Cox, University of Durham, U.K.
+         n.j.cox@@durham.ac.uk
+
+
+Also see
+--------
+
+On-line:  help for @circsumm@

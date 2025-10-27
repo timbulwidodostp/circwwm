@@ -1,0 +1,141 @@
+.-
+help for ^circsumm^
+.-
+
+Summary statistics for circular data
+------------------------------------
+
+    ^circsumm^ varname [weight] [^if^ exp] [^in^ range]
+    [ ^, ci lev^el^(^#^) r^ayleigh ^k^uiper ^d^etail ]
+
+Description
+-----------
+
+^circsumm^ produces summary statistics for circular variables with
+scales between 0 and 360 degrees. These are
+    the mean direction (in degrees)
+    the length of the resultant vector
+    the vector strength or mean resultant length
+        (length of resultant / number of observations)
+    the circular range (length of smallest arc including all
+        observations) (in degrees)
+
+
+Remarks
+-------
+
+Suppose we have n measurements of a circular variable y. Then calculate
+
+    C = SUM cos y
+
+    S = SUM sin y
+
+    arctan(S / C), the mean direction
+
+    R = SQRT(C * C + S * S), the length of the resultant vector
+
+    R / n, the vector strength or mean resultant length.
+
+
+Options
+-------
+
+^ci^ produces a confidence interval for the vector mean suitable for
+    large samples (at least 25 values, say). This is based on an
+    assumption that sampling variation follows a normal distribution.
+    If we calculate further
+
+    m_2 = (1 / n) SUM cos 2(y - vector mean of y)
+
+    then the circular standard error CSE is estimated by
+
+    SQRT[ n * (1 - m_2) / (2 * R * R) ]
+
+    and the confidence interval is estimated as from
+
+    vector mean - arcsin(z * CSE)
+
+    to
+
+    vector mean + arcsin(z * CSE)
+
+    where z is the appropriate percentage point, given ^level( )^, from
+    the Normal distribution with mean 0 and standard deviation 1.
+
+^level(^#^)^ specifies the confidence level in percent for the
+    confidence interval. The default is 95, meaning that z is
+    approximately 1.96.  See help for ^ci^.
+
+^rayleigh^ produces the Rayleigh test, which tests a null hypothesis of
+    uniformity against an alternative hypothesis of unimodality (P-value
+    shown)
+
+^kuiper^ produces the Kuiper test, which tests a null hypothesis of
+    uniformity against any alternative (V statistic and P-value shown).
+    A numerical approximation due to Stephens (1970, p.118) is used that
+    gives accuracy to 3 decimal places for P < 0.447 (V > 1.26).
+
+^detail^ is a synonym for ^ci rayleigh kuiper^.
+
+
+Note on weights
+---------------
+
+aweights, fweights and iweights are allowed.
+
+If weights are specified, they are used in calculating the mean
+direction, the resultant vector length and the vector strength, and
+hence the Rayleigh test if produced. They are not used in calculating
+the circular range or the Kuiper test.
+
+The resultant vector length, expressed in the units of the weights, is
+the vector strength * the mean weight.
+
+
+Examples
+--------
+
+        . ^circsumm wallasp^
+        . ^circsumm wallasp, r k^
+        . ^circsumm wallasp if grading==2^
+
+
+Saved values
+------------
+
+     S_1   number of observations
+     S_2   mean direction
+     S_3   vector length
+     S_4   vector strength
+     S_5   circular range
+     S_6   P-value for Rayleigh test  (if ^rayleigh^ option)
+     S_7   Vn statistic for Kuiper test (if ^kuiper^ option)
+     S_8   V statistic for Kuiper test  (if ^kuiper^ option)
+     S_9   P-value for Kuiper test (if ^kuiper^ option)
+     S_10  vector length in weight units (if weights used)
+     S_11  lower confidence limit (if ^ci^ option) (degrees)
+     S_12  upper confidence limit (if ^ci^ option) (degrees)
+     S_13  circular standard error (if ^ci^ option) (radians)
+
+
+References
+----------
+
+Fisher, N.I. 1993. Statistical analysis of circular data. Cambridge:
+Cambridge University Press.
+
+Stephens, M.A. 1970. Use of the Kolmogorov-Smirnov, Cramer-von Mises and
+related statistics without extensive tables. Journal of the Royal
+Statistical Society Series B 32: 115-22.
+
+
+Author
+------
+         Nicholas J. Cox, University of Durham, U.K.
+         n.j.cox@@durham.ac.uk
+
+
+Also see
+--------
+
+On-line:  help for @circcent@, @circcomp@, @ci@

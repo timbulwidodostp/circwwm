@@ -1,0 +1,55 @@
+.-
+help for ^circysm^
+.-
+
+Smoothing including lowess for circular data, y-variable circular
+-----------------------------------------------------------------
+
+    ^circysm^ yvar xvar [^if^ exp] [^in^ range]
+    [ ^, g^enerate^(^newvar^)^ ksm_options circplot_options ]
+
+Description
+-----------
+
+^circysm^ carries out smoothing (including lowess) of a circular
+y-variable (specified first in the varlist) with respect to some
+non-circular x variable. yvar should take on values between 0 and 360
+degrees. The smoothed result is
+
+    arctan(smoothed sine of yvar / smoothed cosine of yvar)
+
+and the kind and degree of smoothing are specified by invoking options
+of ^ksm^. ^circplot^ is used to show the results graphically, and must
+be installed.
+
+
+Options
+-------
+
+^generate(^newvar^)^ specifies that newvar is to be generated containing
+     the results of smoothing.
+
+ksm_options are the options ^line^, ^weight^, ^bwidth()^ and ^lowess^
+    allowed with ^ksm^; see help for ^ksm^.
+
+circplot_options are those allowed with ^circplot^; see help for
+    ^circplot^.
+
+
+Examples
+--------
+
+        . ^circysm wallasp length, gen(lowessl) lowess^
+
+
+Author
+------
+         Nicholas J. Cox, University of Durham, U.K.
+         n.j.cox@@durham.ac.uk
+
+
+Also see
+--------
+
+On-line: help for @ksm@, @graph@, @circplot@, @circxsm@
+

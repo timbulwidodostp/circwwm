@@ -1,0 +1,67 @@
+.-
+help for ^circplot^
+.-
+
+Scatter plot for circular data with wrapping round of data
+----------------------------------------------------------
+
+    ^circplot^ varlist [weight] [^if^ exp] [^in^ range]
+    [ ^, x^circ ^y^circ ^p^ad^(^#^) d^iff graph_options ]
+
+Description
+-----------
+
+^circplot^ produces a scatter plot for varlist with some wrapping round
+of data. It is applicable when at least one of the varnames in varlist
+is of a circular variable taking on values between 0 and 360 degrees.
+
+
+Remark
+------
+
+People with other kinds of circular data could easily modify the program
+by changing 360 to another constant.
+
+Options
+-------
+
+^xcirc^ means that the last varname in varlist (the x-variable)
+    specifies a circular variable.
+
+^ycirc^ means that the first varname in varlist (a y-variable) specifies
+    a circular variable.
+
+^xcirc^ and ^ycirc^ may be specified together.
+
+^pad(^#^)^ places a pad of # degrees at each axis end. Data less than or
+    equal to # degrees are copied at the right or top end of the axis
+    for an interval of 360 to 360+# degrees. Data more than 360-#
+    degrees are copied at the left or bottom end of the axis for an
+    interval of -# to 0 degrees. The default is 180, so that a full two
+    cycles are shown.
+
+^diff^ means that the original data and the copied data within the pads
+    are to be shown by different point symbols. This option is only
+    applicable when a single y-variable is being shown.
+
+graph_options are any of the options allowed with ^graph, twoway^;
+    see help for ^graph^.
+
+
+Examples
+--------
+
+        . ^circplot wallpdf deg, pad(45) xla yla xcirc^
+        . ^circplot wallasp axisasp, pad(45) xla yla xcirc ycirc^
+
+
+Author
+------
+         Nicholas J. Cox, University of Durham, U.K.
+         n.j.cox@@durham.ac.uk
+
+Also see
+--------
+
+On-line: help for @graph@, @circcorr@, @circlcco@, @circksm@
+

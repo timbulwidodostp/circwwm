@@ -1,0 +1,39 @@
+.-
+help for ^circdiff^
+.-
+
+Difference between circular variables
+-------------------------------------
+
+    ^circdiff^ varname1 varname2 ^, g^enerate^(^newvar^)^
+
+Description
+-----------
+
+^circdiff^ calculates the circular difference between varname1 and varname2,
+both circular variables between 0 and 360 degrees, and puts it
+in a new variable newvar. The difference is the shorter of the two
+rotations taking varname2 to varname1, increasing azimuth or clockwise
+being positive.
+
+Option
+------
+
+^generate(^newvar^)^ specifies the name of the new variable and is not
+    optional.
+
+Example
+-------
+
+        . ^circdiff axisasp wallasp, gen(diffasp)^
+
+Author
+------
+
+        Nicholas J. Cox, University of Durham, U.K.
+        n.j.cox@@durham.ac.uk
+
+Also see
+--------
+
+On-line:  help for @circcorr@

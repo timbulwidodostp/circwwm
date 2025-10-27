@@ -1,0 +1,66 @@
+.-
+help for ^circwwm^
+.-
+
+Wheeler-Watson-Mardia test for circular data
+--------------------------------------------
+
+    ^circwwm^ varname [^if^ exp] [^in^ range] ^, by(^groupvar^)^
+
+Description
+-----------
+
+^circwwm^ carries out a homogeneity test for circular variables with
+scales between 0 and 360 degrees due to Wheeler and Watson (1964) and
+Mardia (1972). The values of varname are grouped according to the r (2
+or more) distinct values of groupvar. The hypothesis under test is
+that the distributions so defined are identical. The test statistic is
+based on the circular ranks of the data, 2 * pi * rank / n, where rank
+varies from 1 to the number of values n.
+
+The W_r statistic can be compared with a chi-square distribution with
+2r - 2 degrees of freedom so long as there are 10 or more values in each
+group. Randomisation is recommended otherwise to get an estimate of the
+P-value. However, ^circwwm^ carries out the chi-square calculation
+regardless and the onus is on the user to identify examples with small
+group sizes and take appropriate action. The tabulation of group
+frequencies should help here.
+
+
+Option
+------
+
+^by(^groupvar^)^ is in fact not optional.
+
+
+Example
+-------
+
+        . ^circwwm wallasp, by(grading)^
+
+
+Saved values
+------------
+
+     S_1  Wheeler-Watson-Mardia statistic
+     S_2  degrees of freedom
+     S_3  P-value
+
+
+Reference
+---------
+
+Fisher, N.I. 1993. Statistical analysis of circular data. Cambridge:
+Cambridge University Press.
+
+
+Author
+------
+         Nicholas J. Cox, University of Durham, U.K.
+         n.j.cox@@durham.ac.uk
+
+
+Also see
+--------
+
+On-line:  help for @circ2sam@

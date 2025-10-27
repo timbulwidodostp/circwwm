@@ -1,0 +1,69 @@
+.-
+help for ^circcorr^
+.-
+
+Correlation for circular data
+-----------------------------
+
+    ^circcorr^ varname1 varname2 [^if^ exp] [^in^ range]
+
+Description
+-----------
+
+^circcorr^ produces a correlation coefficient appropriate for two
+circular variables taking on values between 0 and 360 degrees.
+
+The correlation is defined for n values of two such variables x and y as
+
+               SUM sin(x[i] - x[j]) sin(y[i] - y[j])
+               i<j
+r_T =   ----------------------------------------------------
+                      2                     2
+        ROOT [ SUM sin (x[i] - x[j]) SUM sin (y[i] - y[j]) ]
+               i<j                   i<j
+
+and takes on values between -1 and 1.
+
+The P-value associated with r_T can be computed for large samples,
+say n >= 25, but depends on the distribution of x and y. If either has a
+mean resultant length (vector strength) of 0, then n * r_T is double
+exponential. Otherwise, ROOT of n * r_T has a Gaussian (normal)
+distribution. Both P-values are calculated.
+
+See Fisher (1993, pp.151-153) for details, but note that both U terms in
+(6.40) on p.152 should be rooted.
+
+
+Example
+-------
+
+        . ^circcorr wallasp axisasp^
+
+
+Saved values
+------------
+
+     S_1  number of observations
+     S_2  correlation
+     S_3  Z of Fisher (1993, 6.40, but see above)
+     S_4  P-value from Z (vector strengths non-zero)
+     S_5  P-value (either vector strength zero)
+
+
+Reference
+---------
+
+Fisher, N.I. 1993. Statistical analysis of circular data. Cambridge:
+Cambridge University Press.
+
+
+Author
+------
+         Nicholas J. Cox, University of Durham, U.K.
+         n.j.cox@@durham.ac.uk
+
+Also see
+--------
+
+On-line: help for @circplot@, @circlcco@
+

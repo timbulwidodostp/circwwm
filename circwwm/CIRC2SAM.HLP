@@ -1,0 +1,103 @@
+.-
+help for ^circ2sam^
+.-
+
+Two-sample tests for circular data
+----------------------------------
+
+    ^circ2sam^ varname [^if^ exp] [^in^ range] ^, by(^groupvar^)^
+
+Description
+-----------
+
+^circ2sam^ carries out two-sample tests for circular variables with
+scales between 0 and 360 degrees due to Watson (1962) and Kuiper (1960).
+The values of varname are grouped according to the precisely two
+distinct values defined by groupvar together with any restrictions
+imposed by ^if^ or ^in^. The hypothesis under test is that the distributions
+so defined are identical. The test statistics are based on the empirical
+distribution functions of the two samples.
+
+
+Option
+------
+
+^by(^groupvar^)^ is in fact not optional.
+
+
+Example
+-------
+
+        . ^circ2sam dir , by(group)^
+
+
+Note on P-values and statistical tables
+---------------------------------------
+
+For the Watson U-square statistic, critical values are given here for a
+few examples of sample sizes n_1 and n_2 and significance level P. For
+many problems with large or moderate samples, the values for infinite
+sizes will serve as adequate approximations.
+
+n_1 n_2   P = 0.5      0.2      0.1      0.05     0.01     0.005    0.001
+  5   5       0.089    0.161    0.225    0.225
+  7   7       0.079    0.135    0.158    0.199    0.304    0.304
+  9   9       0.077    0.125    0.155    0.187    0.266    0.286    0.384
+ 12  12       0.075    0.122    0.153    0.186    0.256    0.284    0.344
+ 20  20       0.069    0.117    0.151    0.185    0.261    0.293    0.367
+ 40  40       0.069    0.117    0.152    0.186    0.264    0.298    0.374
+100 100       0.069    0.117    0.152    0.187    0.267    0.300    0.378
+infinite      0.071    0.117    0.152    0.187    0.268    0.304    0.385
+
+Fuller tables can be found in Mardia (1972, p.314), Batschelet (1981,
+p.348) and Zar (1999, Table B.38), the last being the most extensive of
+these.
+
+For the Kuiper statistics, tables can be found in Batschelet (1981,
+pp.341, 346-7) and in Upton and Fingleton (1989, pp.393, 395). So long as
+at least one sample is more than 12, k* may be compared with the
+following critical values (see discussion in Upton and Fingleton,
+p.279):
+
+    P = 0.1      0.05      0.01      0.005      0.001
+        1.62     1.75      2.00      2.10       2.30
+
+
+Saved values
+------------
+
+     S_1   smaller sample size
+     S_2   larger sample size
+     S_3   Watson U-square statistic
+     S_4   Kuiper V statistic
+     S_5   Kuiper k statistic
+     S_6   Kuiper k* statistic
+
+
+References
+----------
+
+Batschelet, E. 1981. Circular statistics in biology. London: Academic
+Press.
+
+Mardia, K.V. 1972. Statistics of directional data. London: Academic
+Press.
+
+Upton, G.J.G. and Fingleton, B. 1989. Spatial data analysis by example.
+Volume 2: Categorical and directional data. Chichester: John Wiley.
+
+Zar, J.H. 1999. Biostatistical analysis. Upper Saddle River, NJ:
+Prentice-Hall.
+
+
+Author
+------
+
+        Nicholas J. Cox, University of Durham, U.K.
+        n.j.cox@@durham.ac.uk
+
+
+Also see
+--------
+
+On-line:  help for @circwwm@
